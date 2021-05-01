@@ -23,11 +23,7 @@ async function getItem(id) {
 async function queryItems() {}
 
 async function addItem(newItem) {
-  var item = StoreItems({
-    id: newItem.id,
-    name: newItem.itemName,
-    price: itemPrice,
-  });
+  var item = new StoreItems(newItem);
   await item.save();
 }
 
