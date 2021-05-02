@@ -12,7 +12,7 @@ module.exports = router;
 
 function create(req, res, next) {
   storeItemsService
-    .create(req.body)
+    .addItem(req.body)
     .then(() => res.json({}))
     .catch((err) => next(err));
 }

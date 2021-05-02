@@ -12,7 +12,7 @@ module.exports = {
 };
 
 async function getAllItems() {
-  return await StoreItems.find().toArray();
+  return await StoreItems.find();
 }
 
 async function getItem(id) {
@@ -23,7 +23,8 @@ async function getItem(id) {
 async function queryItems() {}
 
 async function addItem(newItem) {
-  var item = new StoreItems(newItem);
+  console.log(newItem.item);
+  var item = new StoreItems(newItem.item);
   await item.save();
 }
 
