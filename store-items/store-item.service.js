@@ -15,8 +15,8 @@ async function getAllItems() {
   return await StoreItems.find();
 }
 
-async function getItem(id) {
-  var item = StoreItems.findOne({ id });
+async function getItem(_id) {
+  var item = StoreItems.findOne({ _id });
   return item;
 }
 //for search bar ... do latter
@@ -28,13 +28,12 @@ async function addItem(newItem) {
   await item.save();
 }
 
-async function removeItem(name) {
-  var query = { name: name };
-  await StoreItems.remove(query);
+async function removeItem(item) {
+  StoreItems.findByIdAndRemove(item);
 }
 
-async function editItem(id, newItem) {
-  const item = await StoreItems.findById(id);
+async function editItem(_id, newItem) {
+  const item = await StoreItems.findById(_id);
 
   // validate
   if (!item) throw "Item not found";

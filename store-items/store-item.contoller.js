@@ -39,7 +39,7 @@ function update(req, res, next) {
 
 function _delete(req, res, next) {
   storeItemsService
-    .delete(req.params.id)
+    .removeItem(req.params.id)
     .then(() => res.json({}))
     .catch((err) => next(err));
 }
