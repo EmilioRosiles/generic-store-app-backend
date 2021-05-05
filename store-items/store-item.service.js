@@ -23,13 +23,18 @@ async function getItem(_id) {
 async function queryItems() {}
 
 async function addItem(newItem) {
-  console.log(newItem.item);
   var item = new StoreItems(newItem.item);
   await item.save();
 }
 
-async function removeItem(item) {
-  StoreItems.findByIdAndRemove(item);
+async function removeItem(id) {
+  StoreItems.findByIdAndRemove(id, function (err, docs) {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log("Item removed");
+    }
+  });
 }
 
 async function editItem(_id, newItem) {

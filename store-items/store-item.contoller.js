@@ -1,12 +1,14 @@
 const express = require("express");
 const router = express.Router();
 const storeItemsService = require("./store-item.service");
+const db = require("_helpers/db");
+const StoreItems = db.StoreItems;
 
 router.get("/", getAllItems);
 router.post("/create", create);
 router.get("/:id", getById);
 router.put("/:id", update);
-router.delete("/delete", _delete);
+router.delete("/:id", removeItem);
 
 module.exports = router;
 
@@ -37,7 +39,7 @@ function update(req, res, next) {
     .catch((err) => next(err));
 }
 
-function _delete(req, res, next) {
+function removeItem(req, res, next) {
   storeItemsService
     .removeItem(req.params.id)
     .then(() => res.json({}))
