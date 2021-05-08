@@ -24,4 +24,5 @@ mongoose.Promise = global.Promise;
 module.exports = {
   User: require("../users/user.model"),
   StoreItems: require("../store-items/store-item.model"),
+  RefreshToken: require("../users/refresh-token.model"),
 };
